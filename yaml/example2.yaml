@@ -1,0 +1,35 @@
+options:
+  verbose: yes
+  setup_dir: setup
+  output_dir: output
+  experiments_dir: experiments
+  randomize_ligand: yes
+  minimize: yes
+  default_number_of_iterations: 2000
+  temperature: 300*kelvin
+  pressure: null
+
+molecules:
+  T4_lysozyme:
+    filepath: T4.pdb
+  p-xylene:
+    smiles: CC1=CC=C(C=C1)C
+    antechamber:
+      charge_method: bcc
+
+solvents:
+  GBSA:
+    nonbonded_method: NoCutoff
+    implicit_solvent: OBC2
+    solvent_dielectric: 78.5
+
+systems:
+  T4-xylene-complex:
+    receptor: T4_lysozyme
+    ligand: p-xylene
+    solvent: GBSA
+    pack: yes
+    leap:
+      parameters: [leaprc.ff14SB, leaprc.gaff
+
+]

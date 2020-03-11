@@ -1,0 +1,39 @@
+option:
+  filename: cpdlist
+
+
+setup:
+  mdinp: yes
+    patch_dir: ./patch
+      parameters: [ ndp_chg.frmod, ndp_chg.prep ]
+    tleap: yes
+    minimize: yes
+    equilibrate: no
+    production: no
+      iterations: 100000       # 2 fs * iterations
+
+  sampling: yes
+    preparation: auto
+    analysis: yes
+      parameters: [ rmsd, volmap ]
+
+
+bandit:
+  fmosetup: yes
+    cutmodel: yes
+      range: [ 1,4,10,20-42 ]
+    minimize: yes
+    basis: 6-31G
+    frgid: 258
+  pieda_dir: ./pieda 
+  stored_dir: ./stored
+  database: piedaDB
+  bai_method: egreedy
+  scoring_method: [ es, di, ex, ct ]
+  budget: 100
+  
+
+
+ml:
+  model: model.pkl
+  
